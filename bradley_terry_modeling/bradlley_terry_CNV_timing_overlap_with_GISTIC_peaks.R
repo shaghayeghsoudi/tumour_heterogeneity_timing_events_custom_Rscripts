@@ -2,7 +2,7 @@
 
 ## rm(list = ls())
 ## this script times CNV segments from molt_time or muttaiontimeR packages and looks at their overlaps with GISTIC peaks and incorporate the involved genes in the timing plot
-
+## This script also makes more plots such as pie chart and heatmaps to compare the timing of different segments
 
 ##### ATTRIBUTION #####
 # Original Author:  Shaghayegh Soudi
