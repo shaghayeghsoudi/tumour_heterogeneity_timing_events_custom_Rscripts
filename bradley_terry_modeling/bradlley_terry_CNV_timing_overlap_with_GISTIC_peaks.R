@@ -783,15 +783,6 @@ dev.off()
 
 Heatmap(rr)
 
-
-
-
-
-
-
-
-
-
 #################
 ### out_res_amp
 names<-colnames(out_res)
