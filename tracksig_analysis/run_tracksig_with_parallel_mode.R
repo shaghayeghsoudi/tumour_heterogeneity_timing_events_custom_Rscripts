@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 #rm(list = ls())
-## this script runs TrackSig analysis to track changes in muttaional influences during the process of tumour evolution in a paralel mode
+## this script runs TrackSig analysis to track changes in muttaional influences during the process of tumour evolution in a parallel mode in R
 
 
 ##### ATTRIBUTION #####
