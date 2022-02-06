@@ -1,20 +1,24 @@
-#### plot Mol_time comparing 
+#!/usr/bin/env Rscript
 
-### CNV overlaps with GISTIC peaks
+## rm(list = ls())
+## this script times CNV segments from molt_time or muttaiontimeR packages and looks at their overlaps with GISTIC peaks and incorporate the involved genes in the timing plot
+
+
+##### ATTRIBUTION #####
+# Original Author:  Shaghayegh Soudi
+# Contributors:    NA 
+
 library(stringr)
 
+## merge all results from different genome assemblies if applicable
+grch37<-read.table(file = "PATH/TO/sample_normal_contamination.txt", header = TRUE)
+grch37_TN<-as.data.frame(str_split_fixed(grch37$SAMPLE, "--", 2))
+colnames(grch37_TN)<-c("Tumour","Normal")
+all<-cbind(grch37,grch37_TN)
 
+#all<-rbind(icgc_grch37,gambl_grch37)
 
-
-icgc_grch37<-read.table(file = "PATH/TO/sample_normal_contamination.txt", header = TRUE)
-gambl_grch37_TN<-as.data.frame(str_split_fixed(gambl_grch37$SAMPLE, "--", 2))
-colnames(gambl_grch37_TN)<-c("Tumour","Normal")
-gambl_grch37<-cbind(gambl_grch37,gambl_grch37_TN)
-
-
-all<-rbind(icgc_grch37,gambl_grch37)
-
-## metadata file for the study
+## metadata file for your study 
 #fl_meta_matched_good<-read.table(file = "/PATH/TO/fl_meta_matched_good_t.table", header = TRUE)
 shared<-fl_meta_matched_good[fl_meta_matched_good$sample_id%in%all$Tumour,]
 non_shared<-fl_meta_matched_good[!(fl_meta_matched_good$sample_id%in%all$Tumour),]
