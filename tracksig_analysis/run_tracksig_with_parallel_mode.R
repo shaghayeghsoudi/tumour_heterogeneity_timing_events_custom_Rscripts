@@ -1,13 +1,12 @@
 #!/usr/bin/env Rscript
 
 #rm(list = ls())
-## this script runs TrackSig analysis to track changes in muttaional influences during the process of tumour evolution in a parallel mode in R
+## this script runs TrackSig package to track changes in muttaional influences during the process of tumour evolution in a parallel mode in R.
 
 
 ##### ATTRIBUTION #####
 # Original Author:  Shaghayegh Soudi
 # Contributors:    NA 
-
 
 
 library(foreach)
@@ -17,7 +16,9 @@ library(stringr)
 library("tidyverse")
 
 
-## path to Sigprofiler results to take the first four active signature for each patient
+## path to Sigprofiler results to take the first four/five active signatures for each patient
+## Tracksig has a function that detects active signature but the developer suggests to do it with a more proper package. We ran SigProfiler fisrt to find active signatures per patient and used the output for the TrackSig nalysis
+
 cosmic<-read.table(file = "/PATH/TO/SIGPROFILER/OUTPUTS/COSMIC_SBS96_Activities_refit.txt", header = TRUE)
 cosmic_with_rname<-cosmic %>% remove_rownames %>% column_to_rownames(var="Samples") 
 
@@ -30,7 +31,7 @@ shared_samples<-cbind(shared_samples,tumour)
 shared_samples$tumour_type<-rep("CLL")
 #shared_samples<-as.character(shared_samples$shared_samples)
 
-
+### directories of merged vcfs and CNVs 
 vcf_dir<-"/PATH/TO/vcfs"
 cna_dir<-"/PATH/TO/cna"
 
