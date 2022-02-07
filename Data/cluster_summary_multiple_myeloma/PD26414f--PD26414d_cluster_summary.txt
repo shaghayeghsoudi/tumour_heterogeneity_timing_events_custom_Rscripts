@@ -1,0 +1,3 @@
+code	segment	plot_dot1	IC_down_cn1	IC_up_cn1	plot_dot2	IC_down_cn2	IC_up_cn2	plot_dot3	IC_down_cn3	IC_up_cn3	chr	type	chrom
+1	gain	chr2-95330387-242955889-gain	0.455696202531646	0.302013422818792	0.592814371257485	NA	NA	NA	NA	NA	NA	chr2	gain	2
+2	gain	chr4-109541-181911457-gain	0.9185667752443	0.819112627986348	1.01552795031056	NA	NA	NA	NA	NA	NA	chr4	gain	4
