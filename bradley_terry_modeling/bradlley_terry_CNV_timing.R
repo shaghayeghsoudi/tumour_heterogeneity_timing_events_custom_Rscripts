@@ -4,8 +4,8 @@ library(stringr)
 
 ### list and load input files 
 ## load cluster_summary files
-setwd("PATH/TO/res-defaults-FL-Genomecanada-grch37-threshold50/")
-filenames <- list.files("cluster_summary",pattern="*.txt", full.names = TRUE)
+setwd("PATH/TO/Data")
+filenames <- list.files("cluster_summary_multiple_myeloma",pattern="*.txt", full.names = TRUE)
 attackStats <- lapply(filenames,function(x) {
   read.csv(x,  header=TRUE, sep = "\t")[,c(1:3)]
 })
@@ -15,8 +15,8 @@ for (i in 1:length(attackStats)){
   attackStats[[i]]<-cbind(attackStats[[i]],filenames[i])
 }
 aa <- do.call("rbind", attackStats) 
-aa$Sample<-gsub("cluster_summary/", "",gsub("_cluster_summary.txt","",aa[,4]))
-aa<-aa[,c(5,2,3)]
+aa$Sample<-gsub("cluster_summary_multiple_myeloma/", "",gsub("_cluster_summary.txt","",aa[,4]))
+aa<-aa[,c(5,2,3)
 
 colnames(aa)<-c("Sample","Gene","BT_VAF")
 #aa$chr <- gsub("-.*$", "", aa$Gene)
@@ -28,7 +28,7 @@ colnames(qq)<-c("chr","start","end","seg")
 cboth<-cbind(aa,qq)
 
 #####
-## laod chromosomal coordinate information
+## laod chromosomal coordinate information based on the genome assembly chosen
 arm<-read.table(file = "PATH/TO/chromArm.hg19.tsv", header = TRUE)
 colnames(arm)<-c("chr","start","end","arm")
 
@@ -161,7 +161,7 @@ m <- paste("n=",nCasesGene[w], sep="")
 wnam<-names(nCasesGene[w])
 str_split_fixed(wnam, "-",2)[,2]
 
-pdf("cluster_summary/bradley_terry_GenomeCanada_FLs_threshold_50.pdf", width=8, heigh=10)
+pdf("cluster_summary/bradley_terry_ICGC_multiplemyeloma_threshold_50.pdf", width=8, heigh=10)
 par(mfrow=c(1,1))
 #par(mfrow=c(1,2), mai = c(0.1, 0.1, 0.1, 6))
 par(mar=c(4,6,3,0),xpd=T )
