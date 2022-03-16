@@ -1,4 +1,10 @@
+### This script takes the results of molecular time (mol_time or muttaiontimer) to estimate the order of aquisition of CNVs based omn Bradley Terry Model.
+
+## author: Shaghayegh Soudi
+## contributer: Francisco Maura
 # rm(list = ls())
+
+
 library(stringr)
 
 
