@@ -1,6 +1,8 @@
-### This script takes the results of molecular time (mol_time or muttaiontimer) to estimate the order of aquisition of CNVs based omn Bradley Terry Model.
+### This script takes the results of molecular time (mol_time or muttaiontimer) to estimate the order of aquisition of CNVs based omn Bradley-Terry Model.
+### To learn about the aproach see this article: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1476-3
 
 ## author: Shaghayegh Soudi
+## shaghayegh.soudi@gmail.com
 # rm(list = ls())
 
 
@@ -8,8 +10,8 @@ library(stringr)
 
 
 ### list and load input files 
+
 ## load cluster_summary files
-setwd("PATH/TO/Data")
 filenames <- list.files("cluster_summary_multiple_myeloma",pattern="*.txt", full.names = TRUE)
 attackStats <- lapply(filenames,function(x) {
   read.csv(x,  header=TRUE, sep = "\t")[,c(1:3)]
@@ -33,7 +35,7 @@ colnames(qq)<-c("chr","start","end","seg")
 cboth<-cbind(aa,qq)
 
 #####
-## laod chromosomal coordinate information based on the genome assembly chosen
+## laod chromosomal coordinate information based on the genome assembly chosen (in this example data mappled on hg19)
 arm<-read.table(file = "PATH/TO/chromArm.hg19.tsv", header = TRUE)
 colnames(arm)<-c("chr","start","end","arm")
 
